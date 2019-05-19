@@ -1,0 +1,12 @@
+<project name="learn-cyclops">
+    <target name="test-ant">
+        <echo>Hello ant</echo>
+    </target>
+
+    <target name="zip-jar">
+        <zip destfile="target/cyclops-all/cyclops-all.jar">
+            <zipgroupfileset dir="target/lib-cyclops" includes="*.jar"/>
+        </zip>
+    </target>
+
+</project>

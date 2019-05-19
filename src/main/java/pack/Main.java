@@ -3,12 +3,11 @@ package pack;
 
 import cyclops.control.Future;
 import mutils.MUtils;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Executors;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
 
@@ -18,17 +17,10 @@ public class Main {
     public static void main(String[] args) {
         var t = 9;
         var executor = Executors.newCachedThreadPool();
-        /*Future<String> tt = Future.of(() -> {
-            return "dfhfg";
-        }, executor);*/
-
-
         var folderLog = new File("D:\\log_files");
 
         var allChild = folderLog.listFiles();
-
-
-        List<Future<Integer>> allTask = new ArrayList<>();
+        var allTask = new ArrayList<Future<Integer>>();
 
         for (var tmpF : allChild) {
             var fi = Future.of(() -> {
@@ -39,7 +31,18 @@ public class Main {
             allTask.add(fi);
         }
 
-        var r= Future.sequence(allTask).concatMap(Function.identity());
+        var r = Future.sequence(allTask);
+
+        r.toCompletableFuture().thenAccept(tt -> {
+            var countAll = new MutableInt();
+            tt.forEach(numLine -> {
+                System.out.println("numline is " + numLine);
+                countAll.add(numLine);
+            });
+            System.out.println("all line is " + countAll.intValue());
+        });
+
+        System.out.println("done");
 
     }
 }
