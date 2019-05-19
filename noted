@@ -1,0 +1,5 @@
+để merge file jar làm theo các bước sau
+1. giải nén tất cả file jar vào một thư mục
+2. vào trong thư mục đã giải nén kia
+3. tại đây mở cmd/powershell lên
+4. dùng lệnh jar -cvf ten-file.jar -c .
