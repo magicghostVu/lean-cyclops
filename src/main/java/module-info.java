@@ -4,5 +4,6 @@ open module use.cyclops {
     requires Agrona;
     requires cyclops.all;
     requires org.apache.commons.lang3;
+    requires lombok;
 
 }
