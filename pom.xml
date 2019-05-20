@@ -29,12 +29,6 @@
             <artifactId>kindedj</artifactId>
             <version>1.1.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.agrona/agrona -->
-        <dependency>
-            <groupId>org.agrona</groupId>
-            <artifactId>agrona</artifactId>
-            <version>0.9.1</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.reactivestreams/reactive-streams -->
         <dependency>
             <groupId>org.reactivestreams</groupId>
@@ -47,7 +41,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.8</version>
-            <scope>provided</scope>
         </dependency>
 
 
@@ -64,6 +57,13 @@
             <scope>system</scope>
             <version>10.3.0</version>
             <systemPath>${project.basedir}/lib-cyclops-all/cyclops-all.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.agrona</groupId>
+            <artifactId>agrona</artifactId>
+            <scope>system</scope>
+            <version>0.9.1</version>
+            <systemPath>${project.basedir}/lib-cyclops-all/Agrona-0.9.1.jar</systemPath>
         </dependency>
 
     </dependencies>

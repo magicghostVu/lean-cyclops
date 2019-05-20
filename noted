@@ -3,3 +3,4 @@
 2. vào trong thư mục đã giải nén kia
 3. tại đây mở cmd/powershell lên
 4. dùng lệnh jar -cvf ten-file.jar -c . để nén lại
+5. chú ý trong trường hợp muốn update MANIFEST jar cfm ten_file.jar manifest.txt .
