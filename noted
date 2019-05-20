@@ -4,3 +4,7 @@
 3. tại đây mở cmd/powershell lên
 4. dùng lệnh jar -cvf ten-file.jar -c . để nén lại
 5. chú ý trong trường hợp muốn update MANIFEST jar cfm ten_file.jar manifest.txt .
+6. khi sử dụng lombok phải chú ý
+    - với mvn thì phải có scope là provided(để nó không add vào runtime), require static(module info)
+    - với standalone thì lombok chỉ được add trong compile time(không có run time), cũng require static
+    - khi compile thì phải sử dụng annotation processor là lombok

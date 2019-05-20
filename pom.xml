@@ -18,11 +18,11 @@
         </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/com.oath.cyclops/cyclops -->
-       <!-- <dependency>
-            <groupId>com.oath.cyclops</groupId>
-            <artifactId>cyclops</artifactId>
-            <version>10.3.0</version>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>com.oath.cyclops</groupId>
+             <artifactId>cyclops</artifactId>
+             <version>10.3.0</version>
+         </dependency>-->
         <!-- https://mvnrepository.com/artifact/io.kindedj/kindedj -->
         <dependency>
             <groupId>io.kindedj</groupId>
@@ -41,8 +41,8 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.8</version>
+            <scope>provided</scope>
         </dependency>
-
 
 
         <dependency>
@@ -77,6 +77,13 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.8</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
             <plugin>
