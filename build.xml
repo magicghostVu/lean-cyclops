@@ -1,12 +1,221 @@
-<project name="learn-cyclops">
-    <target name="test-ant">
-        <echo>Hello ant</echo>
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="use-cyclops" default="all">
+
+
+    <property file="build.properties"/>
+    <!-- Uncomment the following property if no tests compilation is needed -->
+    <!--
+    <property name="skip.tests" value="true"/>
+     -->
+
+    <!-- Compiler options -->
+
+    <property name="compiler.debug" value="on"/>
+    <property name="compiler.generate.no.warnings" value="off"/>
+    <property name="compiler.args" value=""/>
+    <property name="compiler.max.memory" value="700m"/>
+    <patternset id="ignored.files">
+        <exclude name="**/*.hprof/**"/>
+        <exclude name="**/*.pyc/**"/>
+        <exclude name="**/*.pyo/**"/>
+        <exclude name="**/*.rbc/**"/>
+        <exclude name="**/*.yarb/**"/>
+        <exclude name="**/*~/**"/>
+        <exclude name="**/.DS_Store/**"/>
+        <exclude name="**/.git/**"/>
+        <exclude name="**/.hg/**"/>
+        <exclude name="**/.svn/**"/>
+        <exclude name="**/CVS/**"/>
+        <exclude name="**/__pycache__/**"/>
+        <exclude name="**/_svn/**"/>
+        <exclude name="**/vssver.scc/**"/>
+        <exclude name="**/vssver2.scc/**"/>
+    </patternset>
+    <patternset id="library.patterns">
+        <include name="*.klib"/>
+        <include name="*.egg"/>
+        <include name="*.jar"/>
+        <include name="*.ear"/>
+        <include name="*.swc"/>
+        <include name="*.war"/>
+        <include name="*.zip"/>
+        <include name="*.ane"/>
+    </patternset>
+    <patternset id="compiler.resources">
+        <exclude name="**/?*.java"/>
+        <exclude name="**/?*.form"/>
+        <exclude name="**/?*.class"/>
+        <exclude name="**/?*.groovy"/>
+        <exclude name="**/?*.scala"/>
+        <exclude name="**/?*.flex"/>
+        <exclude name="**/?*.kt"/>
+        <exclude name="**/?*.clj"/>
+        <exclude name="**/?*.aj"/>
+    </patternset>
+
+
+    <!-- Project Libraries -->
+
+    <path id="library.maven:_io.kindedj:kindedj:1.1.0.classpath">
+        <pathelement location="${path.variable.maven_repository}/io/kindedj/kindedj/1.1.0/kindedj-1.1.0.jar"/>
+    </path>
+
+    <path id="library.maven:_org.apache.commons:commons-lang3:3.8.1.classpath">
+        <pathelement
+                location="${path.variable.maven_repository}/org/apache/commons/commons-lang3/3.8.1/commons-lang3-3.8.1.jar"/>
+    </path>
+
+    <path id="library.maven:_org.projectlombok:lombok:1.18.8.classpath">
+        <pathelement location="${path.variable.maven_repository}/org/projectlombok/lombok/1.18.8/lombok-1.18.8.jar"/>
+    </path>
+
+    <path id="library.maven:_org.reactivestreams:reactive-streams:1.0.0.classpath">
+        <pathelement
+                location="${path.variable.maven_repository}/org/reactivestreams/reactive-streams/1.0.0/reactive-streams-1.0.0.jar"/>
+    </path>
+
+    <!-- Modules -->
+
+
+    <!-- Module use-cyclops -->
+
+    <dirname property="module.use-cyclops.basedir" file="${ant.file}"/>
+
+
+    <property name="compiler.args.use-cyclops" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+
+    <property name="use-cyclops.output.dir" value="${module.use-cyclops.basedir}/target/classes"/>
+    <property name="use-cyclops.testoutput.dir" value="${module.use-cyclops.basedir}/target/test-classes"/>
+
+    <path id="use-cyclops.module.bootclasspath">
+        <!-- Paths to be included in compilation bootclasspath -->
+    </path>
+
+    <path id="use-cyclops.module.production.classpath">
+        <path refid="library.maven:_io.kindedj:kindedj:1.1.0.classpath"/>
+        <path refid="library.maven:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+        <path refid="library.maven:_org.projectlombok:lombok:1.18.8.classpath"/>
+        <path refid="library.maven:_org.apache.commons:commons-lang3:3.8.1.classpath"/>
+        <pathelement location="${basedir}/lib-cyclops-all/cyclops-all.jar"/>
+        <pathelement location="${basedir}/lib-cyclops-all/Agrona-0.9.1.jar"/>
+    </path>
+
+    <path id="use-cyclops.runtime.production.module.classpath">
+        <pathelement location="${use-cyclops.output.dir}"/>
+        <path refid="library.maven:_io.kindedj:kindedj:1.1.0.classpath"/>
+        <path refid="library.maven:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+        <path refid="library.maven:_org.apache.commons:commons-lang3:3.8.1.classpath"/>
+        <pathelement location="${basedir}/lib-cyclops-all/cyclops-all.jar"/>
+        <pathelement location="${basedir}/lib-cyclops-all/Agrona-0.9.1.jar"/>
+    </path>
+
+    <path id="use-cyclops.module.classpath">
+        <pathelement location="${use-cyclops.output.dir}"/>
+        <path refid="library.maven:_io.kindedj:kindedj:1.1.0.classpath"/>
+        <path refid="library.maven:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+        <path refid="library.maven:_org.projectlombok:lombok:1.18.8.classpath"/>
+        <path refid="library.maven:_org.apache.commons:commons-lang3:3.8.1.classpath"/>
+        <pathelement location="${basedir}/lib-cyclops-all/cyclops-all.jar"/>
+        <pathelement location="${basedir}/lib-cyclops-all/Agrona-0.9.1.jar"/>
+    </path>
+
+    <path id="use-cyclops.runtime.module.classpath">
+        <pathelement location="${use-cyclops.testoutput.dir}"/>
+        <pathelement location="${use-cyclops.output.dir}"/>
+        <path refid="library.maven:_io.kindedj:kindedj:1.1.0.classpath"/>
+        <path refid="library.maven:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+        <path refid="library.maven:_org.projectlombok:lombok:1.18.8.classpath"/>
+        <path refid="library.maven:_org.apache.commons:commons-lang3:3.8.1.classpath"/>
+        <pathelement location="${basedir}/lib-cyclops-all/cyclops-all.jar"/>
+        <pathelement location="${basedir}/lib-cyclops-all/Agrona-0.9.1.jar"/>
+    </path>
+
+
+    <patternset id="excluded.from.module.use-cyclops">
+        <patternset refid="ignored.files"/>
+    </patternset>
+
+    <patternset id="excluded.from.compilation.use-cyclops">
+        <patternset refid="excluded.from.module.use-cyclops"/>
+    </patternset>
+
+    <path id="use-cyclops.module.sourcepath">
+        <dirset dir="${module.use-cyclops.basedir}">
+            <include name="src/main/java"/>
+            <include name="target/generated-sources/annotations"/>
+        </dirset>
+    </path>
+
+
+    <target name="compile.module.use-cyclops"
+            depends="compile.module.use-cyclops.production,compile.module.use-cyclops.tests"
+            description="Compile module use-cyclops"/>
+
+    <target name="compile.module.use-cyclops.production" description="Compile module use-cyclops; production classes">
+        <mkdir dir="${use-cyclops.output.dir}"/>
+        <javac destdir="${use-cyclops.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}"
+               memorymaximumsize="${compiler.max.memory}" fork="true">
+            <compilerarg line="${compiler.args.use-cyclops}"/>
+            <bootclasspath refid="use-cyclops.module.bootclasspath"/>
+            <modulepath refid="use-cyclops.module.production.classpath"/>
+            <classpath refid="library.maven:_org.projectlombok:lombok:1.18.8.classpath"/>
+            <src refid="use-cyclops.module.sourcepath"/>
+            <patternset refid="excluded.from.compilation.use-cyclops"/>
+        </javac>
+
+        <copy todir="${use-cyclops.output.dir}">
+            <fileset dir="${module.use-cyclops.basedir}/src/main/java">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+            <fileset dir="${module.use-cyclops.basedir}/target/generated-sources/annotations">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
     </target>
 
-    <target name="zip-jar">
-        <zip destfile="target/cyclops-all/cyclops-all.jar">
-            <zipgroupfileset dir="target/lib-cyclops" includes="*.jar"/>
-        </zip>
+    <target name="compile.module.use-cyclops.tests" depends="compile.module.use-cyclops.production"
+            description="compile module use-cyclops; test classes" unless="skip.tests"/>
+
+    <target name="clean.module.use-cyclops" description="cleanup module">
+        <delete dir="${use-cyclops.output.dir}"/>
+        <delete dir="${use-cyclops.testoutput.dir}"/>
     </target>
 
+    <target name="init" description="Build initialization">
+        <!-- Perform any build initialization in this target -->
+    </target>
+
+    <target name="clean" depends="clean.module.use-cyclops, clean.artifact.buid_jar" description="cleanup all"/>
+
+    <target name="build.modules" depends="init, clean, compile.module.use-cyclops" description="build all modules"/>
+
+    <target name="init.artifacts">
+        <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+        <property name="artifact.output.buid_jar" value="${basedir}/classes/artifacts/buid_jar"/>
+        <mkdir dir="${artifacts.temp.dir}"/>
+        <property name="temp.jar.path.use_cyclops.jar" value="${artifacts.temp.dir}/use_cyclops.jar"/>
+    </target>
+
+    <target name="clean.artifact.buid_jar" description="clean buid_jar artifact output">
+        <delete dir="${artifact.output.buid_jar}"/>
+    </target>
+
+    <target name="artifact.buid_jar" depends="init.artifacts, compile.module.use-cyclops"
+            description="Build &#39;buid_jar&#39; artifact">
+        <mkdir dir="${artifact.output.buid_jar}"/>
+        <jar destfile="${temp.jar.path.use_cyclops.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+            <zipfileset dir="${use-cyclops.output.dir}"/>
+        </jar>
+        <copy file="${temp.jar.path.use_cyclops.jar}" tofile="${artifact.output.buid_jar}/use_cyclops.jar"/>
+    </target>
+
+    <target name="build.all.artifacts" depends="artifact.buid_jar" description="Build all artifacts">
+
+        <!-- Delete temporary files -->
+        <delete dir="${artifacts.temp.dir}"/>
+    </target>
+
+    <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
 </project>

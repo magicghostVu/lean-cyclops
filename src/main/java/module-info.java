@@ -5,5 +5,6 @@ open module use.cyclops {
     requires org.agrona;
     requires cyclops.all;
     requires org.apache.commons.lang3;
+    requires java.logging;
 
 }
