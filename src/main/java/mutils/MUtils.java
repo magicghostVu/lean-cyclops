@@ -1,11 +1,11 @@
 package mutils;
 
+import cyclops.control.Eval;
 import org.apache.commons.lang3.mutable.MutableInt;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.stream.Stream;
 
 public class MUtils {
@@ -15,9 +15,11 @@ public class MUtils {
             var reader = new FileReader(f);
             var bufferedReader = new BufferedReader(reader);
             return bufferedReader.lines();
+
+
         } catch (Exception e) {
             e.printStackTrace();
-            return new ArrayList<String>().stream();
+            return Stream.empty();
         }
     }
 

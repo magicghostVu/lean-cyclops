@@ -9,5 +9,5 @@
     - với standalone thì lombok chỉ được add trong compile time(không có run time), cũng require static
     - khi compile thì phải sử dụng annotation processor là lombok
 7. khi sử dụng java 11 với ant nhớ chú ý tại javac, sửa cái classpath thành module path, và nếu cần annotation processor
-thì thêm classpath với cái file xử lý anno đấy vào
+thì thêm classpath với cái file xử lý anno đấy vào, chú ý là cái modulepath chỉ có sẵn từ ant 1.9.7
 -> perfect
