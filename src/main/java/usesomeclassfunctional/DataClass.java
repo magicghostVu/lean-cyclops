@@ -24,7 +24,8 @@ public class DataClass {
         address = Maybe.fromEval(Eval.later(this::supplyAddress));
 
 
-        address.fold()
+
+        //address.fold()
         evalAddress = Eval.later(this::supplyAddress);
 
         //System.out.println();

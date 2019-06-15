@@ -3,7 +3,7 @@
 2. vào trong thư mục đã giải nén kia
 3. tại đây mở cmd/powershell lên
 4. dùng lệnh jar -cvf ten-file.jar -c . để nén lại (hình như trên Mac không cần -c ở cuối)
-5. chú ý trong trường hợp muốn create jar mới manifest có sẵn: jar cfm ten_file.jar file_manifest.txt .
+5. chú ý trong trường hợp muốn create jar mới manifest có sẵn: jar cfm ten_file.jar file_manifest.txt .  (chú ý đấu . ở cuối)
 6. khi sử dụng lombok phải chú ý
     - với mvn thì phải có scope là provided(để nó không add vào runtime), require static(module info)
     - với standalone thì lombok chỉ được add trong compile time(không có run time), cũng require static

@@ -1,4 +1,4 @@
-open module use.cyclops {
+ module use.cyclops {
     requires static lombok;
     requires kindedj;
     requires reactive.streams;
@@ -6,5 +6,5 @@ open module use.cyclops {
     requires cyclops.all;
     requires org.apache.commons.lang3;
     requires java.logging;
-
+    requires jdk.unsupported;
 }

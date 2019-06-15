@@ -1,6 +1,5 @@
 package mutils;
 
-import cyclops.control.Eval;
 import org.apache.commons.lang3.mutable.MutableInt;
 
 import java.io.BufferedReader;

@@ -2,6 +2,7 @@ package pack;
 
 
 import cyclops.control.Future;
+import cyclops.control.Option;
 import mutils.MUtils;
 import org.apache.commons.lang3.mutable.MutableInt;
 
@@ -15,7 +16,12 @@ public class Main {
 
 
     public static void main(String[] args) {
+
+        //Option
+
         var t = 9;
+
+        //t = 9.0;
         var executor = Executors.newCachedThreadPool();
         var folderLog = new File("D:\\log_files");
 

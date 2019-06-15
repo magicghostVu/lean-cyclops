@@ -10,20 +10,6 @@
 
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.oath.cyclops/cyclops-futurestream -->
-        <!--<dependency>
-            <groupId>com.oath.cyclops</groupId>
-            <artifactId>cyclops-futurestream</artifactId>
-            <version>10.3.0</version>
-        </dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/com.oath.cyclops/cyclops -->
-        <!-- <dependency>
-             <groupId>com.oath.cyclops</groupId>
-             <artifactId>cyclops</artifactId>
-             <version>10.3.0</version>
-         </dependency>-->
-        <!-- https://mvnrepository.com/artifact/io.kindedj/kindedj -->
         <dependency>
             <groupId>io.kindedj</groupId>
             <artifactId>kindedj</artifactId>
